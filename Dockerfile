@@ -19,6 +19,7 @@ WORKDIR /app
 COPY . /app
 
 RUN gem install bundler -v 1.17.3 || gem install bundler
+RUN git config --global url."https://github.com/".insteadOf git://github.com/
 RUN bundle install
 
 ENV RAILS_ENV=production
