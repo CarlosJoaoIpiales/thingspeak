@@ -21,8 +21,7 @@ COPY . /app
 
 RUN gem install bundler -v 1.17.3 || gem install bundler
 RUN git config --global url."https://github.com/".insteadOf git://github.com/
-RUN rm -f Gemfile.lock
-RUN bundle install --full-index
+RUN bundle install --deployment --without development test --full-index
 
 ENV RAILS_ENV=production
 ENV RACK_ENV=production
