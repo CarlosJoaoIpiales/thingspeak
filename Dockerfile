@@ -21,7 +21,8 @@ COPY . /app
 
 RUN gem install bundler -v 1.17.3 || gem install bundler
 RUN git config --global url."https://github.com/".insteadOf git://github.com/
-RUN bundle install --full-index || true && bundle update tzinfo-data --full-index && bundle install --full-index
+RUN rm -f Gemfile.lock
+RUN bundle install --full-index
 
 ENV RAILS_ENV=production
 ENV RACK_ENV=production
